@@ -20,5 +20,5 @@ public class AccountSteps extends TestBase {
         WebLink edit = new WebLink().setText("Edit").setLabel("Shipping Address").setLabelTag("*");
         edit.click();
     }
-    
+
 }

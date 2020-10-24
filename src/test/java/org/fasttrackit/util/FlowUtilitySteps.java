@@ -46,4 +46,5 @@ public class FlowUtilitySteps extends TestBase {
     public void I_switch_last_browser_tab() throws Throwable {
         WebDriverConfig.switchToLastTab();
     }
+
 }
