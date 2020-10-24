@@ -14,6 +14,7 @@ public abstract class TestBase {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestBase.class);
 
     public static WebDriver driver;
+
     protected LoginPage loginPage;
 
     public TestBase() {
@@ -38,13 +39,6 @@ public abstract class TestBase {
 
     public void doLogin(String user, String pass) {
         driver.get("https://rawgit.com/sdl/Testy/master/src/test/functional/app-demo/login.html");
-
-        driver.findElement(By.name("username")).sendKeys(user);
-
-    WebElement passwordElement = driver.findElement(By.id("password"));
-            passwordElement.sendKeys(pass);
-
-    WebElement loginBtn = driver.findElement(By.id("loginButton"));
-            loginBtn.click();
+        loginPage.login(user, pass);
     }}
 

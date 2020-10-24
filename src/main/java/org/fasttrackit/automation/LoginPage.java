@@ -12,4 +12,9 @@ public class LoginPage {
     public WebElement loginBtn;
 
 
+    public void login(String user, String pass) {
+        userNameElement.sendKeys(user);
+        passwordElement.sendKeys(pass);
+        loginBtn.click();
+    }
 }
