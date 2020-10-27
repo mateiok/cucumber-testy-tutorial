@@ -4,6 +4,7 @@ import com.sdl.selenium.web.utils.Utils;
 import org.fasttrackit.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -11,6 +12,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class PreferencesTest extends TestBase {
 
+private PreferencesPage page;
+public PreferencesTest(){
+    page = PageFactory.initElements(driver, PreferencesPage.class);
+}
 
     @Test
     public void preferencesWindowShouldCloseTest(){
@@ -73,17 +78,8 @@ public class PreferencesTest extends TestBase {
         WebElement preferencesBtn = driver.findElement(By.cssSelector(".navbar-header button"));
         preferencesBtn.click();
 
-        Utils.sleep(400);
+        page.changePassword(pass, newPass, repeatPass);
 
-        WebElement passwordField = driver.findElement(By.xpath("//*[@id=\"preferences-win\"]//input[@name=\"password\"]"));
-        WebElement newPasswordField = driver.findElement(By.xpath("//*[@id=\"preferences-win\"]//input[@name=\"newPassword\"]"));
-        WebElement confirmPasswordField = driver.findElement(By.xpath("//*[@id=\"preferences-win\"]//input[@name=\"newPasswordRepeat\"]"));
-        WebElement saveBtn = driver.findElement(By.xpath("//*[@id='preferences-win']//button[text()='Save']"));
-
-        passwordField.sendKeys(pass);
-        newPasswordField.sendKeys(newPass);
-        confirmPasswordField.sendKeys(repeatPass);
-        saveBtn.click();
     }
 
 }
