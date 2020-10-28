@@ -1,14 +1,10 @@
 package org.fasttrackit.automation;
 
-import com.sdl.selenium.web.WebLocator;
 import com.sdl.selenium.web.utils.Utils;
 import org.fasttrackit.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import java.util.List;
-
-import java.nio.file.WatchEvent;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,7 +14,7 @@ public class LoginTest extends TestBase {
 
     @Test
     public void validLoginTest(){
-        doLogin("eu@fast.com", "eu.pass" );
+        doLogin(USER_NAME, PASSWORD);
 
        Utils.sleep(400);
         WebElement logoutBtn = driver.findElement(By.linkText("Logout"));

@@ -3,15 +3,15 @@ package org.fasttrackit.util;
 import com.sdl.selenium.utils.config.WebDriverConfig;
 import com.sdl.selenium.web.Browser;
 import org.fasttrackit.automation.LoginPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class TestBase {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestBase.class);
+    public static String USER_NAME = "eu@fast.com";
+    public static String PASSWORD = "eu.pass";
 
     public static WebDriver driver;
 
