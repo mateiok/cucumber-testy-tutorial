@@ -3,6 +3,7 @@ package org.fasttrackit.util;
 import com.sdl.selenium.utils.config.WebDriverConfig;
 import com.sdl.selenium.web.Browser;
 import org.fasttrackit.automation.LoginPage;
+import org.fasttrackit.automation.LoginView;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
@@ -15,12 +16,7 @@ public abstract class TestBase {
 
     public static WebDriver driver;
 
-    protected LoginPage loginPage;
-
-    public TestBase() {
-        System.out.println("TestBase Constructor");
-        loginPage = PageFactory.initElements(driver, LoginPage.class);
-    }
+    protected LoginView loginPage = new LoginView();
 
 
     static {
