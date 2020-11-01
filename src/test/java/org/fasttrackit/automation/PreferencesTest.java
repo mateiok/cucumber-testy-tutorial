@@ -12,10 +12,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class PreferencesTest extends TestBase {
 
-private PreferencesPage page;
-public PreferencesTest(){
-    page = PageFactory.initElements(driver, PreferencesPage.class);
-}
+    private PreferencesView page = new PreferencesView();
+//private PreferencesPage page;
+//public PreferencesTest(){
+  //  page = PageFactory.initElements(driver, PreferencesPage.class);
+//}
 
     @Test
     public void preferencesWindowShouldCloseTest(){
