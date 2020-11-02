@@ -4,7 +4,6 @@ import com.sdl.selenium.web.utils.Utils;
 import org.fasttrackit.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -29,8 +28,7 @@ public class PreferencesTest extends TestBase {
         public void tryToChangePassWithInvalidPreviewPasswordTest() {
             changePassword("wrong.pass", "new.pass", "new.pass");
 
-            WebElement statusMsg = driver.findElement(By.xpath("//*[@id='preferences-win']//*[@class='status-msg']"));
-            String message = statusMsg.getText();
+            String message = page.getStatusMsg();
             assertThat(message, is("Your preview password is incorrect!"));
 
         }
@@ -39,8 +37,8 @@ public class PreferencesTest extends TestBase {
     public void tryToChangePassWithInvalidConfirmPassTest(){
         changePassword("eu.pass", "new.pass", "new.pass.wrong");
 
-        WebElement statusMsg = driver.findElement(By.xpath("//*[@id='preferences-win']//*[@class='status-msg']"));
-        String message = statusMsg.getText();
+        String message = page.getStatusMsg();
+
         assertThat(message, is("Password does not match the confirm password!"));
     }
 
@@ -48,8 +46,8 @@ public class PreferencesTest extends TestBase {
     public void successChangePassTest(){
         changePassword(PASSWORD, "new.pass", "new.pass");
 
-        WebElement statusMsg = driver.findElement(By.xpath("//*[@id='preferences-win']//*[@class='status-msg']"));
-        String message = statusMsg.getText();
+        String message = page.getStatusMsg();
+
         assertThat(message, is("Your password has been successfully changed."));
 
        page.close();
@@ -63,8 +61,7 @@ public class PreferencesTest extends TestBase {
 
         //revert to old pass
         changePassword("new.pass", "eu.pass", "eu.pass");
-        statusMsg = driver.findElement(By.xpath("//*[@id='preferences-win']//*[@class='status-msg']"));
-        message = statusMsg.getText();
+        message = page.getStatusMsg();
         assertThat(message, is("Your password has been successfully changed."));
         PASSWORD = "eu.pass";
     }

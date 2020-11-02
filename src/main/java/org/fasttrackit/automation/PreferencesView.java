@@ -8,25 +8,30 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class PreferencesView {
-    private Button preferencesBtn = new Button().setElCssSelector(".navbar-header button");
-    private WebLocator xBtn = new WebLocator().setElCssSelector("#preferences-win button.close");
+public class PreferencesView extends WebLocator{
+    private Button preferencesBtn = new Button().setText("Preferences");
 
-    private TextField passwordField = new TextField().setElPath("//*[@id='preferences-win']//input[@name='password']");
-    private TextField newPasswordField = new TextField().setElPath("//*[@id='preferences-win']//input[@name='newPasswordRepeat']");
-    private TextField confirmPasswordField = new TextField().setElPath("//*[@id='preferences-win']//input[@name='newPasswordRepeat']");
-    private Button saveBtn = new Button().setElPath("//*[@id='preferences-win']//button[text()='Save']");
+   public PreferencesView(){
+       setId("preferences-win");
+   }
 
-    private WebLocator statusMsg = new WebLocator().setElPath("//*[@id='preferences-win']//*[@class='status-msg']");
+    private Button xBtn = new Button(this).setClasses("close");
 
-    private Button closeBtn = new Button().setElCssSelector("#preferences-win .modal-footer button");
+    private TextField passwordField = new TextField(this).setName("password");
+    private TextField newPasswordField = new TextField(this).setName("newPassword");
+    private TextField confirmPasswordField = new TextField(this).setName("newPasswordRepeat");
+    private Button saveBtn = new Button(this).setText("Save");
+
+    private WebLocator statusMsg = new WebLocator(this).setClasses("status-msg");
+
+    private Button closeBtn = new Button(this).setText("Close");
 
 
 
     public void changePassword(String pass, String newPass, String repeatPass) {
-        passwordField.sendKeys(pass);
-        newPasswordField.sendKeys(newPass);
-        confirmPasswordField.sendKeys(repeatPass);
+        passwordField.setValue(pass);
+        newPasswordField.setValue(newPass);
+        confirmPasswordField.setValue(repeatPass);
         saveBtn.click();
     }
 
@@ -43,5 +48,9 @@ public class PreferencesView {
         xBtn.click();
         Utils.sleep(400);
 
+    }
+
+    public String getStatusMsg() {
+        return statusMsg.getText();
     }
 }
