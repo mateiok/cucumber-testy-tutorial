@@ -39,11 +39,11 @@ public abstract class TestBase {
         driver.get("https://rawgit.com/sdl/Testy/master/src/test/functional/app-demo/login.html");
         loginPage.login(user, pass);
     }
-@AfterMethod
+
+/*@AfterMethod
     public void end(ITestResult result){
       if (!result.isSuccess())
           LOGGER.warn("Test Failed: " + result.getName());
     Utils.getScreenShot(result.getName(), PropertiesReader.RESOURCES_PATH + "\\results\\screens\\");
-    }
+    }*/
 }
-
